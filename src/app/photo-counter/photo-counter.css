@@ -1,33 +1,24 @@
-/* Save Button - Prominent CTA */
+﻿/* Save Button - Prominent CTA */
 .save-btn {
   width: 100%;
-  padding: var(--space-lg);
-  min-height: 56px; /* ← Larger for primary action */
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  padding: 1.5rem;
+  min-height: 56px;
+  background-color: var(--success);
+  color: var(--text-on-accent);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 8px;
   font-size: 1.125rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
-  will-change: transform;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
 }
 
 .save-btn:hover {
-  background-color: var(--color-primary-dark);
-  box-shadow: var(--shadow-lg);
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-@media (hover: hover) {
-  .save-btn:hover {
-    transform: translateY(-2px);
-  }
-}
-
-@media (hover: none) {
-  .save-btn:active {
-    transform: scale(0.98);
-  }
+.save-btn:active {
+  transform: scale(0.98);
 }

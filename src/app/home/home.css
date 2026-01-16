@@ -1,16 +1,16 @@
-/* Home Page - Navigation Hub */
+﻿/* Home Page - Navigation Hub */
 :host {
   display: flex;
   flex-direction: column;
-  padding: var(--space-lg);
+  padding: 1.5rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--color-neutral-100) 0%, var(--color-white) 100%);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
 .home-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 2rem;
   max-width: 600px;
   margin: 0 auto;
   width: 100%;
@@ -19,58 +19,56 @@
 h1 {
   text-align: center;
   font-size: 2.5rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
 }
 
 p {
   text-align: center;
   font-size: 1.125rem;
-  color: var(--color-neutral-700);
-  margin-bottom: var(--space-xl);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
 nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-lg);
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--info);
   text-decoration: none;
-  transition: all var(--transition-normal);
+  transition: all 0.3s;
   border: 2px solid transparent;
 }
 
 nav a:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary);
-  background-color: rgba(0, 217, 126, 0.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--info);
+  background-color: var(--info);
+  color: var(--text-on-accent);
 }
 
 nav a:active {
   transform: translateY(-2px);
 }
 
-/* Mobile-first is default above. Tablet+ enhancements: */
+/* Tablet+ enhancements */
 @media (min-width: 640px) {
   nav {
     flex-direction: row;
-    gap: var(--space-lg);
+    gap: 1.5rem;
   }
 
   nav a {

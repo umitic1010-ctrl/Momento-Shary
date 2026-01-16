@@ -1,8 +1,8 @@
-/* Photo Gallery - Professional PWA (Mobile First) */
+﻿/* Photo Gallery - Professional PWA (Mobile First) */
 .gallery-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1rem;
   width: 100%;
   max-width: 100%;
   /* Mobile: Safe area for notch/home indicator */
@@ -54,21 +54,21 @@ input[type="file"] {
 /* Photo Actions Container - Side-by-side buttons */
 .photo-actions {
   display: flex;
-  gap: var(--space-md);
+  gap: 1rem;
   width: 100%;
 }
 
 /* Shared Button Styles - Touch-friendly (48px min) */
 .camera-btn,
 .file-btn {
-  flex: 1; /* ← Each button takes equal space */
+  flex: 1; /* â† Each button takes equal space */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
-  min-height: 48px; /* ← Touch target requirement */
-  color: var(--color-white);
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  min-height: 48px; /* â† Touch target requirement */
+  color: var(--text-on-accent);
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 1rem;
@@ -76,16 +76,16 @@ input[type="file"] {
   cursor: pointer;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
-  will-change: transform; /* ← Performance hint */
+  will-change: transform; /* â† Performance hint */
 }
 
 /* Camera Button - Primary action (green for "go") */
 .camera-btn {
-  background-color: var(--color-primary);
+  background-color: var(--success);
 }
 
 .camera-btn:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--success);
   box-shadow: var(--shadow-lg);
 }
 
@@ -228,11 +228,11 @@ input[type="file"] {
 /* Close Button - Top right corner */
 .modal-close-btn {
   position: absolute;
-  top: var(--space-lg);
-  right: var(--space-lg);
+  top: 1.5rem;
+  right: 1.5rem;
   /* Mobile: Adjust for safe area */
-  top: calc(var(--space-lg) + env(safe-area-inset-top));
-  right: calc(var(--space-lg) + env(safe-area-inset-right));
+  top: calc(1.5rem + env(safe-area-inset-top));
+  right: calc(1.5rem + env(safe-area-inset-right));
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -324,14 +324,14 @@ input[type="file"] {
 input[type="text"],
 input[type="search"] {
   width: 100%;
-  padding: var(--space-md);
-  min-height: 48px; /* ← Touch target */
+  padding: 1rem;
+  min-height: 48px; /* â† Touch target */
   font-size: 1rem;
   /* Mobile: Prevent zoom on focus (iOS) */
   font-size: max(1rem, 16px);
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  background-color: var(--text-on-accent);
   transition: border-color var(--transition-fast);
   /* Mobile: Better appearance */
   -webkit-appearance: none;
@@ -341,7 +341,7 @@ input[type="search"] {
 input[type="text"]:focus,
 input[type="search"]:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--success);
   box-shadow: 0 0 0 3px rgba(0, 217, 126, 0.1);
 }
 
@@ -351,22 +351,22 @@ input[type="search"]:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-2xl) 1.5rem;
   text-align: center;
-  background-color: var(--color-white);
+  background-color: var(--text-on-accent);
   border-radius: var(--radius-lg);
-  border: 2px dashed var(--color-neutral-300);
+  border: 2px dashed var(--border-color);
   min-height: 300px;
 }
 
 .placeholder p:first-child {
   font-size: 3rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1rem;
 }
 
 .placeholder p:last-child {
   font-size: 1.125rem;
-  color: var(--color-neutral-700);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -375,7 +375,7 @@ input[type="search"]:focus {
   display: grid;
   /* Mobile: Single column, full width */
   grid-template-columns: 1fr;
-  gap: var(--space-md);
+  gap: 1rem;
   width: 100%;
 }
 
@@ -383,7 +383,7 @@ input[type="search"]:focus {
 @media (min-width: 640px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
+    gap: 1.5rem;
   }
 }
 
@@ -398,12 +398,12 @@ input[type="search"]:focus {
 .photo-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-white);
+  background-color: var(--text-on-accent);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
-  will-change: transform; /* ← Performance optimization */
+  will-change: transform; /* â† Performance optimization */
 }
 
 /* Desktop: Hover lift effect */
@@ -425,23 +425,23 @@ input[type="search"]:focus {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background-color: var(--color-neutral-200);
+  background-color: var(--bg-secondary);
 }
 
 /* Photo Card Content */
 .photo-card > div:last-child {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--space-md);
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
 /* Photo Note Input - Touch-friendly */
 .photo-note {
   width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  min-height: 44px; /* ← Touch target */
-  border: 1px solid var(--color-neutral-300);
+  padding: 0.5rem 1rem;
+  min-height: 44px; /* â† Touch target */
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   transition: all var(--transition-fast);
@@ -449,7 +449,7 @@ input[type="search"]:focus {
 
 .photo-note:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--success);
   box-shadow: 0 0 0 2px rgba(0, 217, 126, 0.1);
 }
 
@@ -457,7 +457,7 @@ input[type="search"]:focus {
 .photo-name {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-neutral-900);
+  color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -466,10 +466,10 @@ input[type="search"]:focus {
 
 /* Delete Button - Touch-friendly */
 .photo-card button {
-  padding: var(--space-sm) var(--space-md);
-  min-height: 44px; /* ← Touch target */
-  background-color: var(--color-error);
-  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  min-height: 44px; /* â† Touch target */
+  background-color: var(--error);
+  color: var(--text-on-accent);
   border: none;
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -492,9 +492,9 @@ input[type="search"]:focus {
 .stats {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background-color: var(--color-white);
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--text-on-accent);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 }
@@ -503,21 +503,21 @@ input[type="search"]:focus {
 .size {
   margin: 0;
   font-weight: 600;
-  color: var(--color-neutral-900);
+  color: var(--text-primary);
   font-size: 1rem;
 }
 
 .count {
-  color: var(--color-primary);
+  color: var(--success);
 }
 
 /* Warning */
 .warning {
-  padding: var(--space-md);
+  padding: 1rem;
   background-color: rgba(244, 67, 54, 0.1);
-  border-left: 4px solid var(--color-error);
+  border-left: 4px solid var(--error);
   border-radius: var(--radius-md);
-  color: var(--color-error);
+  color: var(--error);
   font-weight: 600;
   font-size: 0.95rem;
 }

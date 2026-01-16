@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { PhotoService } from '../photo-service';
 import { PhotoGallery } from '../photo-gallery/photo-gallery';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-photo-counter',
-  imports: [PhotoGallery, RouterLink],
+  imports: [PhotoGallery],
   templateUrl: './photo-counter.html',
   styleUrl: './photo-counter.css',
 })

@@ -13,7 +13,7 @@ export class RecentSelectionService {
   private readonly STORAGE_KEY = 'momento_recent_selections';
   private readonly MAX_RECENT = 5;
   
-  private readonly recentItems = signal<RecentItem[]>(this.loadFromStorage());
+  readonly recentItems = signal<RecentItem[]>(this.loadFromStorage());
   
   readonly recentSpots = computed(() => {
     const spots = new Set<string>();
