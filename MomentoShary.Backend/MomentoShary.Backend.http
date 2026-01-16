@@ -1,0 +1,6 @@
+@MomentoShary.Backend_HostAddress = https://10.0.0.89:7296
+
+GET {{MomentoShary.Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
