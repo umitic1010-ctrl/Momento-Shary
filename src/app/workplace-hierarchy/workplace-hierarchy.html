@@ -1,0 +1,35 @@
+<div class="hierarchy-container">
+  <div class="header">
+    <h1>Arbeitsplatz-Organisation</h1>
+    <div class="controls">
+      <button (click)="expandAll()" class="control-btn">📂 Alle öffnen</button>
+      <button (click)="collapseAll()" class="control-btn">📁 Alle schließen</button>
+    </div>
+  </div>
+
+  <div class="hierarchy-list">
+    @for (spot of workplaces(); track spot.name; let i = $index) {
+      <div class="spot-card" [class.expanded]="spot.expanded">
+        <div class="spot-header" (click)="toggleSpot(i)">
+          <div class="spot-info">
+            <span class="icon">{{ spot.expanded ? '📂' : '📁' }}</span>
+            <h2>{{ spot.name }}</h2>
+            <span class="job-count">{{ spot.jobs.length }} Jobs</span>
+          </div>
+          <span class="toggle-icon">{{ spot.expanded ? '▼' : '▶' }}</span>
+        </div>
+        
+        @if (spot.expanded) {
+          <div class="jobs-list">
+            @for (job of spot.jobs; track job) {
+              <div class="job-item">
+                <span class="job-icon">⚙️</span>
+                <span class="job-name">{{ job }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

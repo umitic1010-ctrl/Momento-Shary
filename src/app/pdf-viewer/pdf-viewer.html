@@ -1,0 +1,48 @@
+<div class="pdf-viewer-container">
+  <h2>PDF-Dokumente</h2>
+
+  @if (loading()) {
+    <div class="loading">Lade PDFs...</div>
+  }
+
+  @if (error()) {
+    <div class="error">{{ error() }}</div>
+  }
+
+  <!-- PDF-Liste -->
+  @if (!selectedPdfUrl() && !loading()) {
+    <div class="pdf-list">
+      @if (pdfs().length === 0) {
+        <p class="empty">Keine PDFs verfügbar</p>
+      } @else {
+        @for (pdf of pdfs(); track pdf.id) {
+          <div class="pdf-item" (click)="openPdf(pdf)">
+            <div class="pdf-icon">📄</div>
+            <div class="pdf-info">
+              <h3>{{ pdf.title }}</h3>
+              @if (pdf.description) {
+                <p>{{ pdf.description }}</p>
+              }
+              <span class="pdf-date">{{ pdf.uploadedAt | date: 'dd.MM.yyyy' }}</span>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  }
+
+  <!-- PDF-Viewer (nur Desktop) -->
+  @if (selectedPdfUrl()) {
+    <div class="pdf-viewer">
+      <div class="viewer-header">
+        <h3>{{ selectedPdfTitle() }}</h3>
+        <button (click)="closePdf()" class="close-btn">✕</button>
+      </div>
+      <iframe 
+        [src]="selectedPdfUrl()" 
+        type="application/pdf"
+        class="pdf-frame">
+      </iframe>
+    </div>
+  }
+</div>

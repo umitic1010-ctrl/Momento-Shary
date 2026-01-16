@@ -1,0 +1,62 @@
+<div class="chrono-container">
+  <div class="header">
+    <h1>Foto Galerie</h1>
+    <button class="refresh-btn" (click)="loadPhotos()" [disabled]="loading()">
+      {{ loading() ? '⏳ Lädt...' : '🔄 Aktualisieren' }}
+    </button>
+  </div>
+
+  @if (error()) {
+    <div class="error-message">
+      <p>❌ {{ error() }}</p>
+      <button (click)="loadPhotos()">Erneut versuchen</button>
+    </div>
+  }
+
+  @if (loading()) {
+    <div class="loading">
+      <p>⏳ Lade Fotos...</p>
+    </div>
+  } @else if (photos().length === 0) {
+    <div class="empty-state">
+      <p>📭 Noch keine Fotos vorhanden</p>
+    </div>
+  } @else {
+    <div class="timeline">
+      @for (group of photosByDate(); track group.date) {
+        <div class="date-group">
+          <h2 class="date-header">{{ group.displayDate }}</h2>
+          <div class="photo-grid">
+            @for (photo of group.photos; track photo.fileName) {
+              <div class="photo-card" (click)="openPhoto(photo)">
+                <img 
+                  [src]="getPhotoUrl(photo)" 
+                  [alt]="photo.fileName"
+                  loading="lazy">
+                <div class="photo-info">
+                  <span class="time">{{ photo.createdAt | date:'HH:mm' }}</span>
+                  <span class="size">{{ formatFileSize(photo.sizeInBytes) }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Fullscreen Photo Modal -->
+  @if (selectedPhoto()) {
+    <div class="modal-overlay" (click)="closePhoto()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="closePhoto()">✕</button>
+        <img [src]="getPhotoUrl(selectedPhoto()!)" [alt]="selectedPhoto()!.fileName">
+        <div class="modal-info">
+          <p><strong>📁 Datei:</strong> {{ selectedPhoto()!.fileName }}</p>
+          <p><strong>📅 Datum:</strong> {{ selectedPhoto()!.createdAt | date:'dd.MM.yyyy, HH:mm:ss' }}</p>
+          <p><strong>💾 Größe:</strong> {{ formatFileSize(selectedPhoto()!.sizeInBytes) }}</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>

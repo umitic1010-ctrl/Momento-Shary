@@ -1,0 +1,224 @@
+/* Context Share - Professional Layout */
+.context-share-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+  min-height: 100vh;
+  background-color: var(--color-neutral-100);
+}
+
+/* Recent Section (Quick Select) */
+.recent-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.recent-section h3 {
+  color: white;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.recent-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recent-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.recent-btn:hover {
+  background: white;
+  transform: translateX(5px);
+}
+
+.recent-spot {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.recent-arrow {
+  color: #999;
+  font-weight: bold;
+}
+
+.recent-job {
+  color: #333;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: var(--space-md);
+}
+
+nav a {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+nav a:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Header */
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.description {
+  color: var(--color-neutral-700);
+  margin: 0;
+}
+
+/* Sections */
+.photo-section,
+.context-section {
+  background-color: var(--color-white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin: 0 0 var(--space-md) 0;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.label-text {
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  font-size: 0.95rem;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: var(--space-md);
+  min-height: 48px;
+  font-size: 1rem;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 217, 126, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Photo Count */
+.photo-count {
+  padding: var(--space-md);
+  background-color: rgba(0, 217, 126, 0.1);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: var(--space-lg);
+  min-height: 56px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  background-color: var(--color-neutral-300);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Error Message */
+.error {
+  padding: var(--space-sm) var(--space-md);
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left: 4px solid var(--color-error);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Success Message */
+.success {
+  padding: var(--space-md);
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid #4caf50;
+  border-radius: var(--radius-md);
+  color: #4caf50;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .context-share-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

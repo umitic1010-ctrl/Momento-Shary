@@ -1,0 +1,10 @@
+<div class="counter">
+ 
+  <h2>Quick Share</h2>
+  
+  <app-photo-gallery></app-photo-gallery>
+  
+  <button class="save-btn" (click)="save()" [disabled]="photoService.getPhotos()().length === 0">
+    💾 Save {{ photoService.getPhotos()().length }} Photo(s)
+  </button>
+</div>

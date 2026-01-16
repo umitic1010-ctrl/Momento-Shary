@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h1>Login to Momento Shary</h1>
+  
+  <label for="username">Username</label>
+  <input 
+    id="username"
+    type="text" 
+    [ngModel]="username()" 
+    (ngModelChange)="username.set($event)" />
+  
+  <label for="password">Password</label>
+  <input 
+    id="password"
+    type="password" 
+    [ngModel]="password()" 
+    (ngModelChange)="password.set($event)" />
+  
+  <button (click)="submit()">Login</button>
+  
+  @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  }
+</div>

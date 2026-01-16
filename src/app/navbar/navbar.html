@@ -1,0 +1,97 @@
+<nav class="navbar">
+  <button 
+    class="hamburger" 
+    (click)="toggleMenu()"
+    [class.active]="menuOpen()"
+    aria-label="Toggle navigation menu"
+    type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="navbar-brand">
+    <h1>Momento Shary</h1>
+  </div>
+  
+  @if (auth.isLoggedIn()) {
+    <div class="navbar-user-desktop">
+      <button 
+        (click)="themeService.toggleTheme()" 
+        class="theme-toggle" 
+        type="button"
+        [attr.aria-label]="'Switch to ' + (themeService.effectiveTheme() === 'light' ? 'dark' : 'light') + ' mode'">
+        @if (themeService.effectiveTheme() === 'light') {
+          🌙
+        } @else {
+          ☀️
+        }
+      </button>
+      <span class="username">{{ auth.getUsername() }}</span>
+      <button (click)="logout()" class="logout-btn" type="button">Logout</button>
+    </div>
+
+    <!-- Overlay for mobile -->
+    @if (menuOpen()) {
+      <div class="menu-overlay" (click)="closeMenu()"></div>
+    }
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" [class.open]="menuOpen()" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <h2>Menü</h2>
+        <button 
+          (click)="themeService.toggleTheme()" 
+          class="theme-toggle-sidebar" 
+          type="button"
+          [attr.aria-label]="'Theme: ' + themeService.theme()">
+          @if (themeService.theme() === 'light') {
+            🌙 Dark
+          } @else if (themeService.theme() === 'dark') {
+            ☀️ Light
+          } @else {
+            🌗 Auto
+          }
+        </button>
+      </div>
+
+      <nav class="nav-links">
+        <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">🏠</span>
+          <span>Home</span>
+        </a>
+        <a routerLink="/photo" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">📸</span>
+          <span>Quick Share</span>
+        </a>
+        <a routerLink="/context-share" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">📋</span>
+          <span>Context Share</span>
+        </a>
+        <a routerLink="/gallery" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">🖼️</span>
+          <span>Gallery</span>
+        </a>
+        <a routerLink="/workplaces" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">🏢</span>
+          <span>Workplaces</span>
+        </a>
+        <a routerLink="/qr-scanner" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">🔳</span>
+          <span>QR Scan</span>
+        </a>
+        <a routerLink="/pdfs" routerLinkActive="active" (click)="closeMenu()" class="nav-link">
+          <span class="icon">📄</span>
+          <span>PDFs</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span class="username-mobile">{{ auth.getUsername() }}</span>
+          <button (click)="logout()" class="logout-btn-mobile" type="button">Logout</button>
+        </div>
+      </div>
+    </aside>
+  }
+</nav>

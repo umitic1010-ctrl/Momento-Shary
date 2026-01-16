@@ -1,0 +1,320 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2c3e50;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Hamburger Button (immer sichtbar) */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburger:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Desktop User Info (rechts oben) */
+.navbar-user-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.logout-btn {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+.logout-btn:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Overlay (nur Mobile) */
+.menu-overlay {
+  display: none;
+}
+
+/* Sidebar Navigation (für beide Plattformen) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 320px;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3);
+  transition: left 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 1000;
+  overflow-y: auto;
+  will-change: left;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: white;
+}
+
+/* Theme Toggle Buttons */
+.theme-toggle,
+.theme-toggle-sidebar {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+
+.theme-toggle {
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-sidebar {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle:hover,
+.theme-toggle-sidebar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus,
+.theme-toggle-sidebar:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(52, 152, 219, 0.5);
+}
+
+.nav-link:focus {
+  outline: 2px solid #3498db;
+  outline-offset: -2px;
+}
+
+.nav-link.active {
+  background-color: rgba(52, 152, 219, 0.2);
+  border-left-color: #3498db;
+  font-weight: 600;
+}
+
+.nav-link .icon {
+  font-size: 1.3rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+/* Sidebar Footer (Mobile User Info) */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  background-color: #1a252f;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.username-mobile {
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.logout-btn-mobile {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn-mobile:hover {
+  background-color: #c0392b;
+}
+
+.logout-btn-mobile:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-brand h1 {
+    font-size: 1.2rem;
+  }
+
+  /* Verstecke Desktop User Info auf Mobile */
+  .navbar-user-desktop {
+    display: none;
+  }
+
+  /* Zeige Overlay auf Mobile */
+  .menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Sidebar kleinere Breite auf Mobile */
+  .sidebar {
+    width: 80%;
+    max-width: 320px;
+    left: -100%;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+/* Extra kleine Bildschirme */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 85%;
+  }
+}

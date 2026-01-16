@@ -1,1 +1,295 @@
 /* You can add global styles to this file, and also import other style files */
+/* ============================================
+   GLOBAL STYLES - Mobile-First Design System
+   ============================================ */
+
+/* 1. CSS Reset & Root Configuration */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Mobile-first: 16px base = 1rem */
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* Mobile: Full height including browser UI */
+  height: 100%;
+  /* iOS: Prevent text size adjustment */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Light theme by default */
+  background-color: #f5f5f5;
+  color: #212121;
+  line-height: 1.5;
+  
+  /* Mobile: Prevent overscroll bounce effect */
+  overscroll-behavior-y: contain;
+  
+  /* Mobile: Full height */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for iOS */
+  
+  /* Mobile: Safe area insets for notch/home indicator */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* 2. Color Variables (Semantic Palette) */
+:root {
+  /* Light Theme (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e0e0e0;
+  
+  --text-primary: #212121;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  --accent-color: #2c3e50;
+  --accent-hover: #34495e;
+  
+  --error-color: #e74c3c;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --info-color: #3498db;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #808080;
+  
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  --accent-color: #3a506b;
+  --accent-hover: #4a607b;
+  
+  --error-color: #ff6b6b;
+  --success-color: #51cf66;
+  --warning-color: #ffd43b;
+  --info-color: #4dabf7;
+}
+
+body {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  /* Primary - Your signature green (refined) */
+  --color-primary: #00d97e;
+  --color-primary-dark: #00a65a;
+  --color-primary-light: #33ff99;
+
+  /* Neutral Grays */
+  --color-neutral-900: #212121;
+  --color-neutral-700: #616161;
+  --color-neutral-500: #9e9e9e;
+  --color-neutral-300: #e0e0e0;
+  --color-neutral-100: #f5f5f5;
+  --color-white: #ffffff;
+
+  /* Semantic */
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #2196f3;
+
+  /* Shadows - for depth */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Spacing (8px grid) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+}
+
+/* 3. Typography System */
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+  color: var(--color-neutral-900);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--space-md);
+  color: var(--color-neutral-900);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--space-sm);
+  color: var(--color-neutral-900);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--color-neutral-700);
+  margin-bottom: var(--space-md);
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--color-neutral-500);
+}
+
+/* 4. Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 5. Buttons - Base Styles */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* 6. Inputs - Base Styles */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-white);
+  color: var(--color-neutral-900);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 217, 126, 0.1);
+}
+
+/* 7. Utility Classes */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-neutral-500);
+}
+
+/* 8. Scrollbar (Optional - for better UX) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
+}
