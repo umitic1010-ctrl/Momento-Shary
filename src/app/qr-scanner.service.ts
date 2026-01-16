@@ -14,7 +14,7 @@ export class QrScanner {
 
   async startCamera(videoElement: HTMLVideoElement): Promise<MediaStream> {
     const stream = await navigator.mediaDevices.getUserMedia({ 
-      video: { facingMode: 'environment' } // Rückkamera bei Handys
+      video: { facingMode: 'environment' } 
     });
     videoElement.srcObject = stream;
     await videoElement.play();

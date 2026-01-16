@@ -18,6 +18,6 @@ export class PhotoCounter {
     
     console.log('Saving photos to:', folderPath);
     console.log('Photos:', photos);
-    // TODO: Send photos to backend API to save to network folder
+    
   }
 }

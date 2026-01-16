@@ -52,8 +52,11 @@ export class PhotoGallery implements OnDestroy {
   // Computed signal: counts the total number of selected photos
   protected readonly count = computed(() => this.selectedImages().length);
   
-  // Computed signal: estimates total size (2MB per photo as placeholder)
-  protected readonly calculateImageSize = computed(() => this.count() * 2);
+  // Computed signal: calculates actual total size in MB from tracked file sizes
+  protected readonly calculateImageSize = computed(() => {
+    const totalBytes = this.selectedImages().reduce((sum, photo) => sum + (photo.size || 0), 0);
+    return totalBytes / (1024 * 1024); // Convert bytes to MB
+  });
 
   // === COMPONENT INPUTS ===
   // Input property: allows parent component to set a photo limit
@@ -79,15 +82,45 @@ export class PhotoGallery implements OnDestroy {
       for (let i = 0; i < input.files.length; i++) {
         const file = input.files[i];
         
+        // Komprimiere Datei wenn > 1MB
+        let finalFile: File | Blob = file;
+        if (file.size > 1024 * 1024) {
+          console.log(`📦 Datei zu groß (${(file.size / 1024 / 1024).toFixed(2)}MB), komprimiere ${file.name}...`);
+          
+          // Lade Bild in Canvas für Kompression
+          const img = new Image();
+          const canvas = document.createElement('canvas');
+          
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => {
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext('2d')!;
+              ctx.drawImage(img, 0, 0);
+              resolve();
+            };
+            img.onerror = reject;
+            img.src = URL.createObjectURL(file);
+          });
+          
+          // Komprimiere
+          finalFile = await this.compressImage(canvas, file.type || 'image/jpeg');
+          console.log(`✅ Komprimiert auf ${(finalFile.size / 1024 / 1024).toFixed(2)}MB`);
+          
+          // Cleanup
+          URL.revokeObjectURL(img.src);
+        }
+        
         // Create a temporary URL for preview (blob URL)
         urls.push({ 
-          url: URL.createObjectURL(file), 
-          name: file.name 
+          url: URL.createObjectURL(finalFile), 
+          name: file.name,
+          size: finalFile.size // Track actual file size in bytes
         });
 
-        // Upload to backend
+        // Upload to backend (komprimierte Version)
         try {
-          const uploadPath = await this.photoService.uploadPhoto(file, file.name);
+          const uploadPath = await this.photoService.uploadPhoto(finalFile, file.name);
           console.log('✅ File uploaded:', file.name, 'to:', uploadPath);
         } catch (error) {
           console.error('❌ File upload failed:', file.name, error);
@@ -266,7 +299,8 @@ export class PhotoGallery implements OnDestroy {
       // Create PhotoItem with blob URL for preview
       const photoItem: PhotoItem = {
         url: URL.createObjectURL(finalBlob),
-        name: file.name
+        name: file.name,
+        size: finalBlob.size // Track actual blob size in bytes
       };
 
       // Add to service (same as file input)
