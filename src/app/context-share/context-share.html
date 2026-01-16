@@ -1,0 +1,70 @@
+<h1>Share Photos for a Job</h1>
+<app-photo-gallery></app-photo-gallery>
+
+<!-- Quick Select Recent (KANN-Kriterium) -->
+@if (recentService.recentItems().length > 0) {
+  <div class="recent-section">
+    <h3>⚡ Quick Select Recent</h3>
+    <div class="recent-items">
+      @for (item of recentService.recentItems(); track $index; let i = $index) {
+        @if (i < 3) {
+          <button 
+            type="button" 
+            class="recent-btn"
+            (click)="selectRecent(item.spot, item.job)">
+            <span class="recent-spot">{{ item.spot }}</span>
+            <span class="recent-arrow">→</span>
+            <span class="recent-job">{{ item.job }}</span>
+          </button>
+        }
+      }
+    </div>
+  </div>
+}
+
+<h2>Select the Job</h2>
+<form [formGroup]="contextForm" (ngSubmit)="onSubmit()">
+  <!-- Suchfeld für Stellen (SOLL-Kriterium!) -->
+  <label>
+    🔍 Search Workplace:
+    <input 
+      type="text" 
+      [value]="searchTerm()" 
+      (input)="searchTerm.set($any($event.target).value)"
+      placeholder="Search for a workplace..." 
+      class="search-input" />
+  </label>
+  
+  <label>
+    1.Step: Select Workplace(Spot):
+    <select formControlName="spot">
+      <option value="">Select Spot...</option>
+      @for (spot of filteredSpots(); track spot) {
+        <option [value]="spot">{{ spot }}</option>
+      }
+    </select>
+  </label>
+  
+  <label>
+    2.Step: Select Job:
+    <select formControlName="job">
+      <option value="">Select Job...</option>
+      @for (job of getJobsForSpot(); track job) {
+        <option [value]="job">{{ job }}</option>
+      }
+    </select>
+  </label>
+  
+  <label>
+    Comments (Optional):
+    <textarea formControlName="comments" rows="3" placeholder="Add any additional notes..."></textarea>
+  </label>
+  
+ <button type="submit" [disabled]="photoService.getPhotos()().length === 0 || contextForm.invalid">
+  @if (photoService.getPhotos()().length === 0) {
+    Add photos to continue
+  } @else {
+    Submit {{ photoService.getPhotos()().length }} photo(s)
+  }
+</button>
+</form>

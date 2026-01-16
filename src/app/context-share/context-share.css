@@ -1,0 +1,201 @@
+﻿/* Context Share - Professional Layout */
+.context-share-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+/* Recent Section (Quick Select) */
+.recent-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.recent-section h3 {
+  color: var(--text-on-accent);
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.recent-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recent-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.recent-btn:hover {
+  background: var(--bg-primary);
+  transform: translateX(5px);
+}
+
+.recent-spot {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.recent-arrow {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.recent-job {
+  color: var(--text-primary);
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-primary);
+  color: var(--info);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+}
+
+nav a:hover {
+  background-color: var(--info);
+  color: var(--text-on-accent);
+}
+
+/* Header */
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.description {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Sections */
+.photo-section,
+.context-section {
+  background-color: var(--bg-primary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label-text {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  min-height: 48px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--info);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Submit Button */
+.btn-submit {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--success);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.status-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.status-success {
+  background-color: var(--success);
+  color: var(--text-on-accent);
+}
+
+.status-error {
+  background-color: var(--error);
+  color: var(--text-on-accent);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .context-share-container {
+    padding: 2rem;
+  }
+}

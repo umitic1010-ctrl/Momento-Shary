@@ -1,0 +1,176 @@
+<div class="gallery-container">
+  <!-- 
+    HIDDEN CANVAS: Used to capture frame from video
+    Canvas never needs to be visible - it's just for pixel data extraction
+  -->
+  <canvas #canvasElement style="display: none;"></canvas>
+  
+  <!-- 
+    FILE INPUT: Hidden file picker
+    Used as fallback or for selecting existing photos
+  -->
+  <input #fileInput type="file" multiple accept="image/*" 
+         (change)="onFileSelect($event)" style="display: none;">
+  
+  <!-- 
+    ACTION BUTTONS: Always visible (camera opens in fullscreen modal)
+    Accessibility: aria-label for screen readers, type="button" explicit
+  -->
+  <div class="photo-actions" role="group" aria-label="Photo input options">
+    <button type="button" class="camera-btn" (click)="openCamera()"
+            aria-label="Open camera to take a photo">
+      <span aria-hidden="true">📷</span> Open Camera
+    </button>
+    <button type="button" class="file-btn" (click)="fileInput.click()"
+            aria-label="Choose files from device">
+      <span aria-hidden="true">📁</span> Choose Files
+    </button>
+  </div>
+  
+  <!-- 
+    SEARCH INPUT: Filter photos by name
+    - [ngModel]: binds INPUT value TO component property (one-way)
+    - (ngModelChange): listens for changes and UPDATES the signal
+    This is manual two-way binding instead of [(ngModel)] for signals
+    Accessibility: label for screen readers, aria-label as fallback
+  -->
+  <label for="photo-search" class="visually-hidden">Search photos by name</label>
+  <input 
+    id="photo-search"
+    type="search" 
+    [ngModel]="searchTerm()"
+    (ngModelChange)="searchTerm.set($event)"
+    placeholder="Search photos..."
+    aria-label="Search photos by name">
+    
+  <!-- 
+    CONDITIONAL RENDERING: @if/@else block (new Angular syntax)
+    Shows different content based on whether photos exist
+  -->
+  @if (count() === 0) {
+    <!-- EMPTY STATE: Shown when no photos are selected -->
+    <div class="placeholder">
+      <p>📷</p>
+      <p>Add photos you wish to share!</p>
+    </div>
+  } @else {
+    <!-- PHOTO GALLERY: Shown when photos exist -->
+    <div class="gallery">
+      <!-- 
+        LIST RENDERING: @for loop (new Angular syntax)
+        - Iterates over filteredImages() signal
+        - track $index: helps Angular efficiently update the DOM
+        - $index: built-in variable for current loop index
+      -->
+      @for (img of filteredImages(); track $index) {
+        <article class="photo-card" role="article" [attr.aria-label]="'Photo ' + ($index + 1) + ' of ' + count()">
+          <!-- 
+            IMAGE DISPLAY: Property binding with [src]
+            - Binds the img tag's src attribute to our blob URL
+            Accessibility: Dynamic alt text with filename
+          -->
+          <img [src]="img.url" [alt]="img.name || 'Photo ' + ($index + 1)" loading="lazy">
+          
+          <!-- 
+            NOTE INPUT: Two-way binding with [(ngModel)]
+            - User can add notes to each photo
+            - Changes are automatically saved to img.note property
+            Accessibility: Proper label association
+          -->
+          <label [attr.for]="'photo-note-' + $index" class="visually-hidden">
+            Add note for {{ img.name }}
+          </label>
+          <input 
+            [id]="'photo-note-' + $index"
+            type="text" 
+            [(ngModel)]="img.note" 
+            [placeholder]="'Add note for ' + img.name"
+            class="photo-note"
+            [attr.aria-label]="'Note for photo ' + img.name">
+          
+          <!-- 
+            FILENAME DISPLAY: Text interpolation {{ }}
+            - Shows the original filename
+          -->
+          <p class="photo-name">{{ img.name }}</p>
+          
+          <!-- 
+            DELETE BUTTON: Event binding with (click)
+            - Calls deletePhoto() method on the service
+            - Passes the current index to delete the right photo
+            Accessibility: Explicit type, descriptive aria-label
+          -->
+          <button type="button" 
+                  (click)="photoService.deletePhoto($index)"
+                  [attr.aria-label]="'Delete photo ' + img.name"
+                  class="delete-btn">
+            Delete
+          </button>
+        </article>
+      }
+    </div>
+    
+    <!-- STATISTICS: Show photo count and estimated size -->
+    <div class="stats">
+      <p class="count">📸 Photos: {{ count() }}</p>
+      <p class="size">💾 Size: {{ calculateImageSize() }} MB</p>
+    </div>
+    
+    <!-- 
+      WARNING: Nested @if condition
+      - Only shows if photo count exceeds the maxPhotos limit
+      - maxPhotos() is an input signal from parent component
+    -->
+    @if (count() > maxPhotos()) {
+      <div class="warning">⚠️ Photo limit reached!</div>
+    }
+  }
+</div>
+
+<!-- 
+  FULLSCREEN CAMERA MODAL
+  Only shown when camera is active
+  Overlays entire screen for better UX on mobile
+-->
+@if (isCameraOpen()) {
+  <div class="camera-modal" 
+       role="dialog" 
+       aria-modal="true" 
+       aria-label="Camera capture"
+       (click)="closeCamera()"
+       (keydown.escape)="closeCamera()">
+    <div class="camera-container" 
+         (click)="$event.stopPropagation()">
+      <!-- 
+        VIDEO ELEMENT: Shows live camera feed
+        #videoElement: Template reference for ViewChild
+        autoplay: Starts automatically when stream attached
+        playsinline: Prevents iOS fullscreen
+        muted: Required for autoplay in some browsers
+        Accessibility: aria-label for screen readers
+      -->
+      <video #videoElement 
+             autoplay 
+             playsinline 
+             muted 
+             class="video-stream"
+             aria-label="Live camera preview"></video>
+      
+      <!-- Camera controls overlay -->
+      <div class="camera-overlay" role="toolbar" aria-label="Camera controls">
+        <button type="button" 
+                class="modal-capture-btn" 
+                (click)="capturePhoto()" 
+                aria-label="Capture photo">
+          <span class="capture-circle" aria-hidden="true"></span>
+        </button>
+        <button type="button" 
+                class="modal-close-btn" 
+                (click)="closeCamera()" 
+                aria-label="Close camera">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+    </div>
+  </div>
+}

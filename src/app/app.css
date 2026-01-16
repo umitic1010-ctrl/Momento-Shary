@@ -1,0 +1,61 @@
+/* App Root Layout - Mobile First */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-neutral-100);
+}
+
+app-root {
+  display: block;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Globale Seitenränder für alle Inhalte */
+  padding: 0 1rem;
+}
+
+/* Größere Bildschirme: Mehr Padding */
+@media (min-width: 768px) {
+  main {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 0 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Header/Navigation Area */
+header {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-neutral-300);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Container for page content */
+.page-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

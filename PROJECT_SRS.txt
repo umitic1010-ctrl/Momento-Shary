@@ -1,0 +1,292 @@
+Software Requirements Specification
+Foto-App: Momento Shary
+Mentor: MSc René Goldschmid
+Student: Uroš Mitić
+Wahlfach-Projekt 2 und Bachelorarbeit 1
+Computer Science and Digital Communications
+FH Campus Wien
+Institute for Applied Sciences
+WS 2025
+1
+Contents
+1 Einleitung 3
+1.1 Zweck . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.1.1 Hintergründe und Ziele des Projekts . . . . . . . . . . . . . . . . 3
+1.1.2 Organisatorische Einbettung . . . . . . . . . . . . . . . . . . . . . 4
+1.1.3 Technische, wirtschaftliche, organisatorische, ergonomische Ziele . 5
+1.2 Produktumfang . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2.1 Muss-Kriterien . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2.2 Soll-Kriterien . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.2.3 Kann-Kriterien . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.2.4 Abgrenzungskriterien . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.2.5 Definitionen, Akronyme, Abkürzungen . . . . . . . . . . . . . . . 8
+1.2.6 Referenzen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2 Allgemeine Übersicht 8
+2.1 Beschreibung der Ausgangssituation (Ist-Zustand) . . . . . . . . . . . . . 8
+2.2 Produkteinsatz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2.1 Anwendungsbereiche . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2.2 Zielgruppen, Qualifikationsniveau . . . . . . . . . . . . . . . . . . 9
+2.2.3 Betriebsbedingungen . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.2.4 Betriebsbedingungen . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.2.5 Allgemeine Restriktionen . . . . . . . . . . . . . . . . . . . . . . . 10
+2.2.6 Annahmen und Abhängigkeiten . . . . . . . . . . . . . . . . . . . 10
+2.3 Produktumfeld . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.1 Systemschnittstelle . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.2 Benutzerschnittstelle . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.3 Hardwareschnittstelle . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.4 Softwareschnittstelle . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.4 Randbedingungen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2
+1 Einleitung
+Haben Sie sich schon mit dem Gedanken begegnet, dass Sie und Ihre Arbeit, die Sie
+leisten, nicht genug gewürdigt werden? Der Arbeitsalltag kann oft auch repetitiv sein
+und wenn man jeden Tag das gleiche wiederholt, ohne das Gefühl zu haben, dass es
+bemerkt und geschätzt wird - kann man auch schnell die Motivation verlieren, oder
+auch dann etwas vernachlässigen, gewisse Prozesse schlechter oder gar nicht ausführen.
+Darüber hinaus kommt es auch oft vor, wenn man im Team arbeitet oder gewisse Tasks
+im Arbeitsort von mehreren Personen zu verschiedenen Zeiten ausgeführt werden sollen,
+kann es auch oft vorkommen, dass es nicht einfach wird festzuhalten, wie gut die einzelnen
+Leistungen sind, oder ob die jeweils von jeder verpflichteten Person auch so ausgeführt
+worden sind. Die Motivation hinter dem Projekt ist es, eine Plattform zu schaffen, wo
+sich Menschen im Arbeitsalltag gewürdigt fühlen und ihre Leistungen bemerkt werden
+können, wie auch dass dieser Prozess unkompliziert und automatisiert wird, einerseits,
+dass diejenigen, die ihre Arbeit ausgeführt haben und sie festhalten wollen, so auch
+dass es im Rahmen des Unternehmens zentral geführt wird und auch für die anderen
+problemlos verfügbar ist. Die App soll eine Progressive Web App (PWA) sein, so dass die
+auf verschiedenen Geräten läuft und unabhängig von verschiedenen Stores, Marketplaces
+und co. ist.
+1.1 Zweck
+Der Zweck des Projekts besteht darin, eine webbasierte Foto-App bereitzustellen, die
+die digitale Dokumentation von Arbeitsprozessen automatisiert. Ziel ist es, manuelle
+Prozesse zu ersetzen, die Nachvollziehbarkeit zu verbessern und die Effizienz in Un￾ternehmen zu steigern.
+1.1.1 Hintergründe und Ziele des Projekts
+Hintergründe:
+• Viele Unternehmen dokumentieren Arbeitsabläufe manuell oder gar nicht, was zu
+Ineffizienzen und fehlender Nachvollziehbarkeit führt.
+• Nach COVID-19 und Digitalisierungstrends erwarten Unternehmen skalierbare Tools
+für die Prozessdokumentation.
+• Bestehende Lösungen sind oft teuer oder erfordern App-Stores, was Barrieren schafft.
+• Mangelnde Wertschätzung der Arbeitsleistung führt zu Motivationsverlust und Qual￾itätseinbußen.
+• Team-übergreifende Dokumentation ist oft uneinheitlich und schwer nachvollziehbar.
+Projektbeschreibung:
+Abhängig von dem Unternehmen, welches diese Anwendung benutzen würde, könnte
+es auch zu Variationen kommen, aber es sei angenommen, dass es sich um ein Produk￾tionsunternehmen handelt.
+Weil es sich um eine PWA handelt, wäre der Zugang durch eine Login-Seite ermöglicht,
+wenn man die App, bzw. die URL aufmacht. Die App würde über ein Hamburger-Menü
+3
+mögliche Views/Seiten bereitstellen, so dass der User sich schnell und intuitiv in der App
+navigieren kann. Der User könnte per Default zu der Einsicht weitergeleitet werden,
+nach dem Login, die alle möglichen Arbeitstätigkeiten, bzw. Stellen anzeigt und nach
+dem anklicken, würde dann eine andere Seite aufgemacht sein, welche alle Jobs anzeigt.
+Weil es sich auch in einem Produktionsunternehmen auch andere Tätigkeiten ausführen,
+würde dann die App einen Schalter haben, um die Ansicht zu wechseln, wenn man auch
+Stellen sehen möchte, wo sich Arbeitstätigkeiten befinden - die nicht dieser Natur sind.
+Die App würde im Dashboard auch die erwähnte Foto-Teilen-Funktion besitzen, wo der
+Benutzer sich Fotos zum teilen aussuchen kann und durch einen Knopfdruck diese zum
+teilen weiterleitet.
+Ziele:
+• Entwicklung einer App, die Fotos automatisch organisiert und teilt.
+• Verbesserung der Nachweisbarkeit für Audits und Qualitätsprozesse.
+• Standardisierung der Dokumentation ohne zusätzliche Softwarekäufe.
+• Sicherstellung von Benutzerfreundlichkeit und Integration in bestehende Netzwerke.
+• Bereitstellung einer intuitiven App zur automatisierten Foto-Dokumentation.
+Wert:
+Abhängig von der Größe des Unternehmens, der Anzahl an den Arbeitern und dem
+Umfang der Produktionsprozesse - wäre dann auch der Bedarf an Organisation, wie auch
+Arbeitsaufwand an der Erstellung und Führung der Dokumentation entsprechend groß.
+Die App würde entweder teils oder ganz diese Prozesse automatisieren, wie auch die Qual￾itätskontrolle verbessern - weil, einerseits für die Produktion der psychologische Druck,
+dass Foto-Beweise existieren, dann auch mehr Nachsicht im Arbeitsablauf fördert, so
+auch die Tatsache, dass man mehr gelobt und geschätzt wird, weil die geleistete Arbeit
+sichtbar wird. Nicht zu vergessen, die einfache Führung von Foto-Dokumentation bietet
+auch eine Datenmenge für bessere Einsicht in die Produktionsprozesse und die möglichen
+Schwachstellen zu entdecken.
+Nutzen:
+Den größten Nutzen bietet die neugewonnene Motivation für die Mitbeteiligten, weil die
+mit den positiven Gefühlen, die entstanden sind, durch die sichtbaren Leistungsnachweise,
+dann auch ihre Arbeit anders betrachten. Für das Management wäre der Nutzen die
+bessere Kommunikation zwischen Abteilungen und die gewonnene Übersicht, die eine
+App mit Bildern im Vergleich zu Papier und Beschreibungen bietet.
+1.1.2 Organisatorische Einbettung
+Das Projekt wird im Rahmen eines Software-Entwicklungsprojekts durchgeführt und ori￾entiert sich an realen Unternehmensumgebungen. Die Lösung eignet sich besonders für
+produzierende Unternehmen mit mehreren Abteilungen und ausgeprägtem Bedarf an Ef￾fizienzsteigerung in der Prozessdokumentation.
+4
+Projektorganisation:
+• Projektleitung: Koordination, Überwachung und Stakeholder-Management
+• Entwicklungsteam: Frontend- und Backend-Implementierung der Anwendung
+• Quality Assurance: Funktionale Tests und Benutzerakzeptanztests
+• Fachbereich: Anforderungsdefinition und kontinuierliches Feedback
+Zielgruppen im Unternehmen:
+• Produktionsmitarbeiter: Primäre Anwender für Foto-Dokumentation
+• Teamleiter/Schichtleiter: Überwachung und Qualitätskontrolle
+• Qualitätsmanagement: Audit-Unterstützung und Compliance
+• Management: Reporting und Prozessoptimierung
+Die Integration erfolgt schrittweise in bestehende Arbeitsabläufe, wobei Change-Management￾Prozesse die Akzeptanz fördern und Schulungsaufwand minimieren.
+1.1.3 Technische, wirtschaftliche, organisatorische, ergonomische Ziele
+Technische Ziele:
+• Entwicklung als Angular Progressive Web App (PWA) für plattformunabhängigen
+Frontend-Zugang
+• .NET Web API als Backend mit Entity Framework für robuste Datenbankintegra￾tion
+• Automatisierte Ordnerstruktur-Erstellung auf Netzlaufwerken basierend auf Be￾nutzerdaten
+• Sichere Authentifizierung durch ein Login System
+Wirtschaftliche Ziele:
+• Signifikante Kostenreduktion durch Verzicht auf externe Software-Lizenzen und
+App-Store-Gebühren
+• Minimierung des Zeitaufwands für Dokumentationsprozesse
+• Verbesserung der Audit-Bereitschaft ohne zusätzliche Investitionen in Dokumenta￾tionssysteme
+• Reduzierung von Nacharbeitskosten durch verbesserte Qualitätskontrolle
+5
+Organisatorische Ziele:
+• Unternehmensweite Standardisierung der Arbeitsdokumentation über verschiedene
+Arbeitsbereiche
+• Verbesserung der abteilungsübergreifenden Kommunikation durch zentrale Foto￾Verfügbarkeit
+• Vereinfachung und Beschleunigung von Audit- und Compliance-Prozessen
+• Erhöhung der Prozess-Transparenz für Management und Qualitätssicherung
+• Schaffung einer einheitlichen Wissensbasis für kontinuierliche Verbesserungen
+Ergonomische Ziele:
+• Intuitive Benutzeroberfläche mit wenigen Klicks bis zur Foto-Dokumentation
+• Responsives Design für Nutzung auf Desktop, Tablet und Smartphone
+• Minimaler Schulungsaufwand durch selbsterklärende Navigation und bekannte UI￾Patterns
+• Anpassbare Benutzeroberfläche für verschiedene Arbeitsplatz-Anforderungen
+1.2 Produktumfang
+Der Produktumfang ist nach der MoSCoW-Methode priorisiert und die Aufwandskriterien
+sind schon vordefiniert: Muss-Kriterien mit 60% des Aufwands, dann Soll-Kriterien und
+Kann-Kriterien mit 20% des Aufwands. Die Foto-App umfasst Funktionen zur Benutzer￾anmeldung, Fotoaufnahme, automatisierter Organisation in Netzwerkordnern, Suche und
+Verwaltung. Sie integriert sich in bestehende Unternehmensnetzwerke und vermeidet ex￾terne Cloud-Speicher.
+1.2.1 Muss-Kriterien
+• Die App muss ein Login-System nutzen, um Benutzer zu authentifizieren und den
+Zugriff auf die App zu steuern.
+• Die App muss webbasierte Fotoaufnahmen für mobile Geräte (Smartphones/Tablets,
+weil die eine eingebaute Kamera besitzen mit der man Fotos machen kann) über
+die Browser-Kamera-API ermöglichen.
+• Die App muss Foto-Sharing für schnelles Teilen ohne Kontext direkt in Netzwerk￾Ordner bereitstellen.
+• Die App muss Fotos automatisch in geteilten Netzwerk-Ordner, der über das LAN
+zugänglich ist, hochladen und speichern.
+• Die App muss automatische Unter-Ordner-Erstellung basierend auf Benutzerdaten
+implementieren (z.B. Verzeichnisstruktur wie "Max Mustermann, Wohnort: Wien
+→ .../MomentoShary/MMW/").
+6
+• Die App muss ein responsives Design für Desktop- und Mobile-Geräte implemen￾tieren, um die Bedienbarkeit in gängigen Browsern (z.B. Chrome, Firefox) zu gewährleis￾ten.
+1.2.2 Soll-Kriterien
+• Die App sollte eine hierarchische Arbeitsplatz-Organisation bereitstellen, die Stellen
+und Jobs strukturiert anzeigt.
+• Die App sollte ein Kontext bezogenes Foto-Sharing, Job-spezifisches Teilen mit
+Zuordnung zu Stellen, bereitstellen.
+• Die App sollte intuitive Navigation über Hamburger-Menü bereitstellen für schnellen
+Zugriff zwischen Modi.
+• Die App sollte Suchfunktionalität für Stellen implementieren.
+• Die App sollte Textfeld für Kommentare bei job-spezifischen Foto-Uploads erlauben.
+• Die App sollte eine Foto-Galerie mit chronologischer Übersicht und Vorschauen
+bieten.
+• Die App sollte automatische Bildkompression implementieren (unter 1MB).
+1.2.3 Kann-Kriterien
+• Die App kann eine Upload-Verlaufsanzeige implementieren, die den Status aktueller
+und kürzlich abgeschlossener Foto-Uploads in Echtzeit anzeigt.
+• Die App kann Fehler-Wiederholung für fehlgeschlagene Uploads bereitstellen, mit
+automatischem Retry-Mechanismus bei Netzwerkproblemen.
+• Die App kann eine Schnellauswahl der zuletzt verwendeten Stellen/Jobs für das
+kontextuelle Teilen implementieren.
+• Die App kann Dark-Mode-Unterstützung basierend auf Browser-/System-Einstellungen
+bereitstellen.
+• Die App kann eine Offline-Warteschlange implementieren, die Fotos lokal zwischen￾speichert und bei Netzwerkverbindung automatisch hochlädt.
+1.2.4 Abgrenzungskriterien
+• Die App wird keine nativen Mobile-Apps entwickeln, sondern nur als PWA fungieren.
+• Die App wird keine Video-Aufzeichnungen unterstützen, sondern ausschließlich
+Standbilder (Fotos).
+• Die App wird keine Integration mit externen ERP-Systemen vorsehen.
+• Die App wird keine erweiterten Bildbearbeitungstools (z.B. Cropping, Filter) en￾thalten.
+7
+• Die App wird keine automatische Bilderkennung oder KI-Features (z.B. Objek￾terkennung) implementieren.
+• Die App wird ausschließlich lokale Netzwerk-Ordner nutzen, keine Cloud-Speicher.
+1.2.5 Definitionen, Akronyme, Abkürzungen
+• PWA: Progressive Web App – Webbasierte App mit App-ähnlichen Features.
+• API: Application Programming Interface – Schnittstelle für Softwarekommunika￾tion.
+1.2.6 Referenzen
+• Angular-Dokumentation für PWA-Entwicklung.
+• .NET Web API Best Practices.
+• Entity Framework Core Tutorials.
+2 Allgemeine Übersicht
+2.1 Beschreibung der Ausgangssituation (Ist-Zustand)
+Derzeitige Arbeitsdokumentation in Unternehmen erfolgt oft manuell oder gar nicht, wenn
+Fotos auch gemacht werden, erfolgt meist die übermitlung über E-Mails, was dann die
+Zuordnung von Fotos zu Projekten verkompliziert und zu ineffizienter Kommunikation
+zwischen Abteilungen führt. Bestehende Infrastruktur umfasst Unternehmens-WLAN
+und Netzwerk-Ordner, jedoch fehlt eine zentrale, automatisierte Lösung zur Dokumenta￾tion von Arbeitsabläufen. Zeitaufwändige Prozesse wie das übermitteln von Fotos mittels
+E-Mail Nachrichten und fehlende Übersicht oder Nachvollzielbarkeit unter der menge an
+festzuhaltenden Material erschweren Audits und Qualitätskontrollen.
+2.2 Produkteinsatz
+Die Foto-App „Momento Shary“ wird in produzierenden Unternehmen eingesetzt, um Ar￾beitsprozesse durch automatisierte Foto-Dokumentation zu vereinfachen. Sie ermöglicht
+die Erfassung, Speicherung und das Teilen von Fotos über ein benutzerfreundliches Inter￾face mit Hamburger-Menu, das sowohl kontextbezogenes Teilen in strukturierten Arbeit￾splätzen (Spots/Job-Gruppen) als auch basisches Teilen ohne Kontext unterstützt. Die
+App integriert sich in bestehende Unternehmensnetzwerke und nutzt Netzwerk-Ordner für
+die Speicherung, um Effizienz, Nachvollziehbarkeit und Mitarbeitermotivation zu steigern.
+2.2.1 Anwendungsbereiche
+Zum Einsatz wurden folgende Anwendungsbereiche bedacht:
+• Produktionsdokumentation: Fotografieren von Arbeitsschritten oder fertigen
+Produkten, die in Spots (Arbeitsplätzen) oder Job-Gruppen zugeordnet und in
+benutzerbasierten Netzwerk-Ordnern gespeichert werden.
+8
+• Qualitätskontrolle: Visuelle Dokumentation von Prüfungen und Fehlern, mit der
+Möglichkeit, Fotos kontextbezogen in Job-Gruppen oder ohne Kontext zu teilen.
+• Wartung und Reparatur: Aufnahme von Before/After-Fotos für Instandhal￾tungsarbeiten, organisiert in Spots/Job-Gruppen oder als basische Dokumentation.
+• Installation und Setup: Dokumentation von Anlagenkonfigurationen, mit Zuord￾nung zu spezifischen Job-Gruppen oder als allgemeine Fotos.
+• Compliance und Audit: Bereitstellung von Fotos als Nachweis für Sicherheits￾und Qualitätsstandards, zugänglich über Netzwerk-Ordner und strukturiert nach
+Spots/Job-Gruppen.
+2.2.2 Zielgruppen, Qualifikationsniveau
+Zielgruppen:
+• Mitarbeiter in Produktion: Dokumentieren täglicher Arbeiten.
+• Qualitätsmanager: Überprüfen und Analysieren von Fotos.
+• Administratoren: Verwalten von Benutzern und Ordnern.
+• Abteilungsleiter: Nutzen für Berichterstattung und Audits.
+Qualifikationsniveau:
+• Mitarbeiter benötigen keine technischen Kenntnisse; grundlegende Smartphone￾Bedienung reicht.
+• Administratoren sollten grundlegende Web-App-Kenntnisse haben.
+• Keine fortgeschrittenen Fähigkeiten erforderlich, da die App intuitiv ist.
+2.2.3 Betriebsbedingungen
+2.2.4 Betriebsbedingungen
+• Geräte: Die App funktioniert auf Android, iOS, Windows und Linux über moderne
+Browser (z.B. Chrome, Firefox) mit Unterstützung für responsive Navigation (z.B.
+Hamburger-Menu) und Spots-Anzeige.
+• Umgebung: Produktionshallen, Werkstätten und Büros mit Zugang zum Unternehmens￾WLAN.
+• Netzwerk: Die App wird ausschließlich im Unternehmens-WLAN betrieben, ohne
+Unterstützung für öffentliche Netze.
+• Gleichzeitige Nutzer: Unterstützung für bis zu 200 aktive Benutzer ohne spür￾baren Leistungsverlust.
+• Speicher-Volumen: Handhabung von 500–1000 Fotos pro Tag, gespeichert in
+Netzwerk-Ordnern mit benutzerbasierter Struktur (z.B. .../MomentoShary/MMW/).
+Nach 30 Tagen werden die Fotos gelöscht damit die Speicherkapazität nicht über￾lastet wird.
+9
+• Verfügbarkeit: Mindestens 99% Verfügbarkeit während Geschäftszeiten (z.B. 8–
+18 Uhr), mit geplanten Wartungen außerhalb dieser Zeiten.
+2.2.5 Allgemeine Restriktionen
+• Hardwareanforderungen: Standard-Geräte mit Kamera und Browser; keine
+speziellen Anforderungen.
+• Plattformgrenzen: Keine Offline-Funktionen jenseits von PWA-Caching; erfordert
+WLAN für Upload.
+• Regulatorische Anforderungen: Einhaltung DSGVO für Foto- und Metadaten￾Speicherung.
+2.2.6 Annahmen und Abhängigkeiten
+Annahmen:
+• Mitarbeiter haben Zugang zu WLAN und Geräten mit Kamera.
+• Netzwerk-Ordner sind vorhanden und konfigurierbar.
+• Benutzer kennen grundlegende Fotoaufnahme.
+Abhängigkeiten:
+• Integration mit .NET-Backend und Entity Framework für Datenbank.
+• Browser-Support für Kamera-API (z.B. Chrome, Firefox).
+• Server-Hosting im Unternehmensnetzwerk für Zugriff auf Ordner.
+2.3 Produktumfeld
+2.3.1 Systemschnittstelle
+Die App kommuniziert mit einem .NET Web API-Backend für Datenverarbeitung und
+speichert Fotos in Netzwerk-Ordnern innerhalb des Unternehmensnetzwerks.
+2.3.2 Benutzerschnittstelle
+Die Benutzerschnittstelle ist eine Angular-basierte Progressive Web App, die über mod￾erne Browser (z.B. Chrome, Firefox) zugänglich ist und eine intuitive Navigation bietet.
+2.3.3 Hardwareschnittstelle
+Die App erfordert Geräte mit Kamera (z.B. Smartphones, Laptops) und Zugang zum
+Unternehmens-WLAN. Keine speziellen Hardwareanforderungen darüber hinaus.
+10
+2.3.4 Softwareschnittstelle
+• Frontend: Angular mit PWA-Features.
+• Backend: .NET Web API mit Entity Framework.
+• Datenbank: Relationale Datenbank (z.B. SQL Server).
+• Browser: Unterstützung für Chrome, Firefox, Edge und Safari.
+2.4 Randbedingungen
+• Die App muss innerhalb des Unternehmensnetzwerks betrieben werden.
+• Einhaltung der DSGVO für die Verarbeitung von Fotos und Metadaten.
+• Keine Abhängigkeit von externen Cloud-Diensten.
+11

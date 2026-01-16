@@ -1,0 +1,27 @@
+<div class="qr-scanner-container">
+  <h2>QR-Code Scanner</h2>
+  
+  <!-- Video-Element für Kamera -->
+  <video #videoElement autoplay playsinline></video>
+  
+  <!-- Buttons -->
+  <div class="controls">
+    <button (click)="onStart()">Kamera starten</button>
+    <button (click)="onStop()">Stoppen</button>
+  </div>
+  
+  <!-- Anzeige des gescannten QR-Codes -->
+  @if (qrCode()) {
+    <div class="result">
+      <h3>Gescannter QR-Code:</h3>
+      <p>{{ qrCode() }}</p>
+    </div>
+  }
+  
+  <!-- Fehlermeldung wenn Browser nicht unterstützt -->
+  @if (errorMessage()) {
+    <div class="error">{{ errorMessage() }}</div>
+  }  
+  @if (successMessage()) {
+    <p class="success">{{ successMessage() }}</p>
+  }</div>

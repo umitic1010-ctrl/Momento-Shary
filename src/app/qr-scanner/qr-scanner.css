@@ -1,0 +1,75 @@
+﻿.qr-container {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+}
+
+.qr-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+video {
+  width: 100%;
+  display: block;
+}
+
+.scan-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: var(--info);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.scan-btn:hover {
+  opacity: 0.9;
+}
+
+.scan-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.success {
+  border-color: var(--success);
+  background-color: var(--bg-primary);
+}
+
+.error {
+  border-color: var(--error);
+  background-color: var(--bg-primary);
+}
+
+.result-box p {
+  margin: 0;
+  color: var(--text-primary);
+}
